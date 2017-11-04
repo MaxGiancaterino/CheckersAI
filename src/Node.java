@@ -54,12 +54,8 @@ public class Node implements Comparable<Node> {
 		}
 	}
 
-	/**
-	 * Makes a fucking branch.
-	 */
 	public void getChildren() {
 		if (lost) {
-			// System.out.println("LOOOOOOSSSSSTTT");
 			this.addChild(new LinkedList<>(), arrBoard, true);
 		} else {
 			// System.out.println("MOVE ATTEMPT");
@@ -68,7 +64,6 @@ public class Node implements Comparable<Node> {
 			// board.printBoard();
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 8; j++) {
-					// System.out.println("START LOOPING");
 					int pieceType = arrBoard[i][j];
 					if (blacksTurn && (pieceType == 3 || pieceType == 4 || pieceType == 0)) {
 						continue;
@@ -99,11 +94,7 @@ public class Node implements Comparable<Node> {
 						tempBoard.attemptMove(start, end, false);
 						getNextCaps(turn, tempBoard, end.getX(), end.getY());
 					}
-					// System.out.println("Advances: " + advances.isEmpty());
-					// System.out.println("Captures: " + captures.isEmpty());
 					if (!advances.isEmpty() || !captures.isEmpty()) {
-						// System.out.println("MAKE FALSE");
-						// System.out.println("");
 						lost = false;
 					}
 				}

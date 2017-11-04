@@ -29,18 +29,8 @@ public class TurnTree {
 			} catch (InterruptedException e) {
 			e.printStackTrace();
 			}
-			//System.out.println("-----------------------------------------------------------------");
-			//System.out.println("Motherfucking Size: " + levelNodes.size());
-			//System.out.println("-----------------------------------------------------------------");
+
 			for (Node node : levelNodes) {
-				//if (node.getTurn() == null) {
-					//System.out.println("ROOT");
-				//} else {
-					//for (Coord c : node.getTurn()) {
-						//System.out.println(c);
-					//}
-				//}
-				//System.out.println("");
 				newLevelNodes.addAll(node.returnChildren());
 			}
 			levelNodes.clear();
