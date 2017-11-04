@@ -39,18 +39,53 @@ public class Capture implements Comparable <Capture> {
 		int dy = Math.abs(startY - endY);
 		return dx == 2 && dy == 2;
 	}
+
+	
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cap == null) ? 0 : cap.hashCode());
+		result = prime * result + ((end == null) ? 0 : end.hashCode());
+		result = prime * result + ((start == null) ? 0 : start.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
-		if (!(o instanceof Capture)) {
+		if (obj == null) {
 			return false;
 		}
-		Capture cap = (Capture) o;
-		
-		return this.start.equals(cap.start) && this.end.equals(cap.end);
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Capture other = (Capture) obj;
+		if (cap == null) {
+			if (other.cap != null) {
+				return false;
+			}
+		} else if (!cap.equals(other.cap)) {
+			return false;
+		}
+		if (end == null) {
+			if (other.end != null) {
+				return false;
+			}
+		} else if (!end.equals(other.end)) {
+			return false;
+		}
+		if (start == null) {
+			if (other.start != null) {
+				return false;
+			}
+		} else if (!start.equals(other.start)) {
+			return false;
+		}
+		return true;
 	}
+	
 	@Override
 	public int compareTo(Capture that) {
 		int startVal = this.start.compareTo(that.start) * 10000;

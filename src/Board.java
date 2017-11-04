@@ -1,6 +1,6 @@
 
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Board {
 
@@ -25,7 +25,7 @@ public class Board {
 	}
 
 	public Set<Advance> getLegalAdvances(int x, int y) {
-		Set<Advance> legalAdvances = new TreeSet<>();
+		Set<Advance> legalAdvances = new HashSet<>();
 		int pieceType = board[x][y];
 		if (pieceType == 1 || pieceType == 2 || pieceType == 4) {
 			if (x != 0 && y != 0) {
@@ -60,7 +60,7 @@ public class Board {
 	}
 
 	public Set<Capture> getLegalCaptures(int x, int y) {
-		Set<Capture> legalCaptures = new TreeSet<>();
+		Set<Capture> legalCaptures = new HashSet<>();
 		int pieceType = board[x][y];
 		if (pieceType == 1 || pieceType == 2 || pieceType == 4) {
 			if (x >= 2 && y >= 2) {

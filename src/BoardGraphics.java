@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -52,7 +52,7 @@ public class BoardGraphics extends JPanel {
 		firstMode = true;
 		blacksTurn = true;
 		midTurn = false;
-		legalMoves = new TreeSet<>();
+		legalMoves = new HashSet<>();
 		try {
 			piece1 = ImageIO.read(new File(PIECE1_FILE));
 			piece2 = ImageIO.read(new File(PIECE2_FILE));
@@ -82,7 +82,7 @@ public class BoardGraphics extends JPanel {
 		firstMode = true;
 		blacksTurn = true;
 		midTurn = false;
-		legalMoves = new TreeSet<>();
+		legalMoves = new HashSet<>();
 		first = null;
 		this.remove(status);
 	}

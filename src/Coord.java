@@ -25,17 +25,35 @@ public class Coord implements Comparable<Coord> {
 	}
 	
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
 			return true;
 		}
-		if (!(o instanceof Coord)) {
+		if (obj == null) {
 			return false;
 		}
-		Coord that = (Coord) o;
-		return this.compareTo(that) == 0;
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Coord other = (Coord) obj;
+		if (x != other.x) {
+			return false;
+		}
+		if (y != other.y) {
+			return false;
+		}
+		return true;
 	}
-	
+
 	public String toString() {
 		return x + " " + y;
 	}

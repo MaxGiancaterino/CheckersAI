@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
+import java.util.HashSet;
 
 public class Node implements Comparable<Node> {
 
@@ -14,7 +14,7 @@ public class Node implements Comparable<Node> {
 	private boolean lost;
 
 	public Node() {
-		this.children = new TreeSet<>();
+		this.children = new HashSet<>();
 	}
 
 	public void makeRoot(Board board, boolean blacksTurn) {
@@ -108,6 +108,37 @@ public class Node implements Comparable<Node> {
 				this.addChild(new LinkedList<>(), arrBoard, true);
 			}
 		}
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((turn == null) ? 0 : turn.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Node other = (Node) obj;
+		if (turn == null) {
+			if (other.turn != null) {
+				return false;
+			}
+		} else if (!turn.equals(other.turn)) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
